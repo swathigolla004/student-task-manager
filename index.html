@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="A focused task manager for students.">
+	<title>StudyFlow | Student Task Manager</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="app-shell">
+		<aside class="sidebar">
+			<div class="brand"><span class="brand-mark">S</span><span>StudyFlow</span></div>
+			<div class="sidebar-copy"><p class="eyebrow">YOUR WORKSPACE</p><h2>Make progress<br>feel simple.</h2><p>Keep your classes, deadlines, and next steps in one calm place.</p></div>
+			<div class="sidebar-footer"><span class="status-dot"></span> Everything is saved locally</div>
+		</aside>
+		<main class="main-content">
+			<header class="topbar"><div><p class="eyebrow">STUDENT DASHBOARD</p><h1>Good to see you.</h1></div><button class="primary-button" id="openAddButton"><span aria-hidden="true">+</span> Add task</button></header>
+			<section class="stats-grid" aria-label="Task statistics">
+				<article class="stat-card"><div class="stat-icon violet">#</div><div><span>Total tasks</span><strong id="totalCount">0</strong></div></article>
+				<article class="stat-card"><div class="stat-icon mint">&#10003;</div><div><span>Completed</span><strong id="completedCount">0</strong></div></article>
+				<article class="stat-card"><div class="stat-icon amber">&#9675;</div><div><span>Pending</span><strong id="pendingCount">0</strong></div></article>
+				<article class="stat-card"><div class="stat-icon coral">&#9733;</div><div><span>High priority</span><strong id="highCount">0</strong></div></article>
+			</section>
+			<section class="task-section">
+				<div class="section-heading"><div><h2>Your tasks</h2><p id="taskSummary">Stay on top of your next steps.</p></div></div>
+				<div class="toolbar"><label class="search-box"><span aria-hidden="true">&#9906;</span><input type="search" id="searchInput" placeholder="Search tasks..." aria-label="Search tasks by title"></label><div class="filter-tabs" role="tablist" aria-label="Filter tasks"><button class="filter-tab active" data-filter="all" role="tab">All</button><button class="filter-tab" data-filter="pending" role="tab">Pending</button><button class="filter-tab" data-filter="completed" role="tab">Completed</button></div></div>
+				<div id="taskList" class="task-list"></div>
+				<div id="emptyState" class="empty-state" hidden><div class="empty-icon">&#10024;</div><h3 id="emptyTitle">No tasks yet</h3><p id="emptyText">Add your first task and turn your plans into progress.</p><button class="secondary-button" id="emptyAddButton">Create a task</button></div>
+			</section>
+		</main>
+	</div>
+	<div class="modal-backdrop" id="modal" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close-button" id="closeModal" aria-label="Close form">&times;</button><p class="eyebrow">TASK DETAILS</p><h2 id="modalTitle">Add a new task</h2><p class="modal-subtitle">Small steps add up. Capture what needs your attention.</p><form id="taskForm" novalidate><label>Task title <input id="titleInput" name="title" type="text" maxlength="80" placeholder="e.g. Finish biology notes" required><span class="error-message" id="titleError"></span></label><label>Description <textarea id="descriptionInput" name="description" maxlength="240" rows="3" placeholder="Add a little context (optional)"></textarea></label><div class="form-row"><label>Priority<select id="priorityInput" name="priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></label><label>Due date<input id="dueDateInput" name="dueDate" type="date" required><span class="error-message" id="dateError"></span></label></div><div class="form-actions"><button type="button" class="secondary-button" id="cancelButton">Cancel</button><button type="submit" class="primary-button" id="saveButton">Save task</button></div></form></section></div>
+	<script src="script.js"></script>
+</body>
+</html>
